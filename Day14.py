@@ -81,7 +81,7 @@ data = [
         'country': 'canada'
     }
 ]
-
+game="continue"
 while game=="continue":
 
 
@@ -101,9 +101,7 @@ while game=="continue":
   followers_b=account_b["followers"]
 
   score=0
-  game="continue"
-
-
+ 
     
   print(f"Compare A: {format_data(account_a)}.")
   print("VS")
@@ -118,14 +116,13 @@ while game=="continue":
     score+=1
 
     account_a=account_b
+    print("\n"*10)
 
   elif followers_a>followers_b and x=="a":
     print(f"correct. Follower A: {followers_a} and Follower B: {followers_b}")
     score+=1
     account_a=account_b
+    print("\n"*10)
   else:
     print(f"Game is over now. Follower A: {followers_a} and Follower B: {followers_b}. Your score was: {score}")
     game="stop"
-
-
-
