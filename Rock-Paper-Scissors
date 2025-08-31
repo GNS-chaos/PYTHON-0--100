@@ -1,0 +1,38 @@
+print("lets start the ros duello. who score 3 first wins, but if you would still continue, we can")
+user_score = 0
+pc_score = 0
+import random
+play = "continue"
+while play == "continue":
+    moves = ["rock", "paper", "scissors"]
+    computer_move = random.choice(moves)
+    user_move = input("your move is: rock, paper or scissors ").lower() # Added .lower() for case-insensitive input
+
+    if user_move in moves:
+        if user_move == computer_move:
+            print(f"your move: {user_move} and my move: {computer_move}")
+            print("its a tie")
+        elif (user_move == "rock" and computer_move == "scissors") or \
+             (user_move == "paper" and computer_move == "rock") or \
+             (user_move == "scissors" and computer_move == "paper"):
+            user_score += 1
+            print(f"your move: {user_move} and my move: {computer_move}")
+            print(f"you won. Score is: You {user_score}-{pc_score} Me")
+        else:
+            pc_score += 1
+            print(f"your move: {user_move} and my move: {computer_move}")
+            print(f"you lost. Score is: You {user_score}-{pc_score} Me")
+    else:
+        print("Invalid move. Please choose rock, paper, or scissors.") # Added feedback for invalid input
+
+    if user_score == 3 or pc_score == 3:
+        print(f"Final Score: You {user_score}-{pc_score} Me") # Display final score
+        answer = input("Do you want to continue? (yes/no) ").lower() # Added .lower() for case-insensitive input
+        if answer == "yes":
+            user_score = 0 # Reset scores for the new game
+            pc_score = 0
+            play = "continue"
+        else:
+            play = "stop"
+    else:
+        play = "continue" # Continue if no one has reached 3 points yet
